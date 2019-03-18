@@ -301,8 +301,8 @@ class mappingSpectrum:
                     y=0
                     for m in spec:
                         lm=np.log(m+1)
-                        if(lm>16):
-                            lm=16
+                        if(lm>15):
+                            lm=15
                         if(lm<0):
                             lm=0
                         color_index=(int)(lm*255/16)
