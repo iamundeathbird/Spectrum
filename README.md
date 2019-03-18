@@ -26,7 +26,7 @@ sample is the self.sample1(for single channel and stereo channel-1)
 from specstrum import mappingSpectrum as ms
 
 
-spec=mm('test.wav',r'./output','mp4')
+spec=mm('test.wav',r'./output','wav')
 
 
 spce.getSample()
