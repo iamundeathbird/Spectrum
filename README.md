@@ -28,3 +28,7 @@ need install cv2,pydub,numpy
      spce.getSample()
      
      spec.makespectrum(k.sample1,save_key='ch1')
+     
+## Results like
+![sample](https://github.com/iamundeathbird/Spectrum/blob/master/output/ch1_0.000000.png)
+     
