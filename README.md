@@ -2,6 +2,7 @@
 Class of Audio reading using AudioSegment and creation of spectrogram using STFT
 # Instructions
 need install cv2,pydub,numpy
+ffmpeg is necessities！！ 
 
 ## Fuction: 
 ###    __init__(filepath,targetfolder='./',audiotype='wav') 
