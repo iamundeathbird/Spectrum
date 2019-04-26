@@ -27,7 +27,7 @@ ffmpeg is necessities！！
      
      spec=ms('test.wav',r'./output','wav')
      
-     spce.getSample()
+     spec.getSample()
      
      spec.makespectrum(spec.sample1,save_key='ch1')
      
