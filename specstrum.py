@@ -310,7 +310,7 @@ class mappingSpectrum:
                         y=y+1
                         if y>383:
                             break
-                cv2.cv2.imwrite(r'{0}\{2}_{1:06d}.png'.format(self.targetfolder,i,save_key),blank_image)
+                cv2.cv2.imwrite(r'{0}\{2}_{1:06d}.png'.format(self.targetfolder,start,save_key),blank_image)
                 start=start+span  
         except Exception as err:
             raise err                      
