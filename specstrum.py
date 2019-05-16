@@ -282,6 +282,21 @@ class mappingSpectrum:
                 self.sample1=samples[::]           
         except  Exception as err:     
              raise err
+    def getSample_from_wav_array(self,wav_array):
+        try:
+            self.sound=AudioSegment(wav_array)
+            samples=np.array(self.sound.get_array_of_samples())
+            if(self.sound.sample_width==4):
+                samples=samples>>16
+            elif(self.sound.sample_width==3):
+                samples=samples>>8  
+            if(self.sound.channels==2):
+                self.sample1=samples[::2]
+                self.sample2=samples[1::2]   
+            else:
+                self.sample1=samples[::]           
+        except  Exception as err:     
+             raise err                
     def makespectrum(self,sample,span=1,start=0,window=1024,shift=256,save_key='spec'):
         try: 
             if span=='all':
