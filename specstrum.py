@@ -329,7 +329,7 @@ class mappingSpectrum:
                 start=start+span  
         except Exception as err:
             raise err
-    def makespectrum_to_array(self,sample,span=1,start=0,window=1024,shift=256,save_key='spec'):
+    def makespectrum_to_array(self,sample,span=1,start=0,window=1024,shift=256):
         try: 
             list=[]
             if span=='all':
