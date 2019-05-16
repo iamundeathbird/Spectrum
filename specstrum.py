@@ -328,7 +328,43 @@ class mappingSpectrum:
                 cv2.cv2.imwrite(r'{0}\{2}_{1:06d}.png'.format(self.targetfolder,start,save_key),blank_image)
                 start=start+span  
         except Exception as err:
+            raise err
+    def makespectrum_to_array(self,sample,span=1,start=0,window=1024,shift=256,save_key='spec'):
+        try: 
+            list=[]
+            if span=='all':
+                span=int(self.sound.duration_seconds)  
+                start=0
+            hammingWindow = np.hamming(window)
+            while start <= (int)(self.sound.duration_seconds):
+                temp= sample[int(self.sound.frame_rate*start):int(self.sound.frame_rate*start)+int(self.sound.frame_rate*span)]
+                total=int((temp.shape[0]- window) / shift)
+                if total<=0:
+                    break
+                blank_image = np.zeros((384,(int)(total),3), np.uint8)
+                for i in range(total):
+                    data = temp[i*shift:i*shift+window]*hammingWindow
+                    spec = np.fft.fft(data)
+                    spec = spec[:int(spec.shape[0]/2)] 
+                    y=0
+                    for m in spec:
+                        lm=np.log(m+1)
+                        if(lm>15):
+                            lm=15
+                        if(lm<0):
+                            lm=0
+                        color_index=(int)(lm*255/16)
+                        blank_image[y,i]=(self.colormap[color_index][0],self.colormap[color_index][1],self.colormap[color_index][2])
+                        y=y+1
+                        if y>383:
+                            break
+                #cv2.cv2.imwrite(r'{0}\{2}_{1:06d}.png'.format(self.targetfolder,start,save_key),blank_image)
+                list.append(blank_image)
+                start=start+span
+            return list    
+        except Exception as err:
             raise err                      
+            
 
 
     
